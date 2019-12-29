@@ -1,8 +1,28 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&display=swap");
+html {
+  font-size: 62.5%;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #f4c460;
+}
+
+.logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.logo {
+  height: 9rem;
+}
+
 .header {
   height: 100vh;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#efd799bb), to(#fcbf24ba)), url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/vintage-map-of-the-world-in-brown-yorkfoto.jpg);
-  background-image: linear-gradient(to right bottom, #efd799bb, #fcbf24ba), url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/vintage-map-of-the-world-in-brown-yorkfoto.jpg);
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#efd799bb), to(#fcbf24cf)), url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/vintage-map-of-the-world-in-brown-yorkfoto.jpg);
+  background-image: linear-gradient(to right bottom, #efd799bb, #fcbf24cf), url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/vintage-map-of-the-world-in-brown-yorkfoto.jpg);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -15,12 +35,12 @@
 }
 
 .header__logo {
-  height: 6rem;
+  height: 9rem;
 }
 
 .header__text-box {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -165,7 +185,7 @@
   position: fixed;
   top: 6.5rem;
   right: 6.5rem;
-  background-image: radial-gradient(#f7d786, #f4c653);
+  background-image: radial-gradient(#f5c857, #f2c85c);
   z-index: 1000;
   -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
   transition: -webkit-transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
@@ -194,13 +214,17 @@
   list-style: none;
   text-align: center;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .navigation__item {
   margin: 1rem;
-}
-
-.navigation__link:link, .navigation__link:visited {
   display: inline-block;
   font-size: 3rem;
   font-weight: 300;
@@ -208,22 +232,17 @@
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.navigation__item:hover, .navigation__item:active {
+  background-position: 100%;
+  color: #fecc4e;
+  -webkit-transform: translateX(1rem);
+          transform: translateX(1rem);
   background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
   background-size: 220%;
   -webkit-transition: all .4s;
   transition: all .4s;
-}
-
-.navigation__link:link span, .navigation__link:visited span {
-  margin-right: 1.5rem;
-  display: inline-block;
-}
-
-.navigation__link:hover, .navigation__link:active {
-  background-position: 100%;
-  color: #f9d479;
-  -webkit-transform: translateX(1rem);
-          transform: translateX(1rem);
 }
 
 .navigation__checkbox:checked ~ .navigation__background {
@@ -272,19 +291,116 @@
   top: 1rem;
 }
 
-.navigation__checkbox:checked + .navigation__button .navigation__icon {
-  background-color: transparent;
+.signInContainer {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.navigation__checkbox:checked + .navigation__button .navigation__icon::before {
-  top: 0;
-  -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
+.signInContainer h3, .signInContainer h4 {
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  -webkit-transition: all .2s;
+  transition: all .2s;
 }
 
-.navigation__checkbox:checked + .navigation__button .navigation__icon::after {
-  top: 0;
-  -webkit-transform: rotate(-135deg);
-          transform: rotate(-135deg);
+.signInContainer .signIn {
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(https://www.nationalgeographic.com/content/dam/news/2018/05/14/map-of-day-launch/02-map-day-launch.adapt.1900.1.jpg);
+  background-size: 100%;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+  width: 50vw;
+  width: 50%;
+  padding: 6rem;
+}
+
+@media only screen and (max-width: 75em) {
+  .signInContainer .signIn {
+    background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 65%, transparent 65%), url(https://www.nationalgeographic.com/content/dam/news/2018/05/14/map-of-day-launch/02-map-day-launch.adapt.1900.1.jpg);
+    background-size: cover;
+  }
+}
+
+@media only screen and (max-width: 75em) {
+  .signInContainer .signIn {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 56.25em) {
+  .signInContainer .signIn {
+    width: 100%;
+  }
+}
+
+.form__input {
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 1.5rem 2rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-bottom: 3px solid transparent;
+  width: 20vw;
+  display: block;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: 56.25em) {
+  .form__input {
+    width: 100%;
+  }
+}
+
+.form__input:focus {
+  outline: none;
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid #f4c460;
+}
+
+.form__input:focus:invalid {
+  border-bottom: 3px solid #171717;
+}
+
+.form__input::-webkit-input-placeholder {
+  color: #333;
+}
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+          transform: translateY(-4rem);
+}
+
+.form .submitButton {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  display: inline-block;
+  border-radius: 10rem;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  position: relative;
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.countryContainer {
+  height: 100vh;
+  width: 100vw;
 }
 /*# sourceMappingURL=style.css.map */

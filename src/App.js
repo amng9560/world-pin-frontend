@@ -1,40 +1,76 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './styles/style.css'
 import './App.css';
+import Home from './components/Home'
+import Navigation from './components/Navigation'
+import Countries from './components/Countries'
+import Profile from './components/Profile'
+import Login from './components/Login'
+import { 
+  BrowserRouter as Router, 
+  Switch, 
+  Route 
+} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <div className="navigation">
-        <label htmlFor="navi-toggle" className="navigation__button">
-          <span className="navigation__icon">&nbsp;</span>
-        </label>
-        <input type="checkbox" className="navigation__checkbox" id="navi-toggle"/>
-        
-        <div className="navigation__background">&nbsp;</div>
+class App extends Component {
+  state = {
+    user: false,
+    countries: []
+  }
 
-        <nav className="navigation__nav">
-          <ul className="navigation__list">
-            <li className="navigation__item"><a href="#" className="navigation__link">Home</a></li>
-            <li className="navigation__item"><a href="#" className="navigation__link">Profile</a></li>
-            <li className="navigation__item"><a href="#" className="navigation__link">Countries</a></li>
-            <li className="navigation__item"><a href="#" className="navigation__link">Login</a></li>
-          </ul>
-        </nav>
+  componentDidMount(){
+    fetch('http://localhost:3000/countries', {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem('authToken')
+      }
+    })
+      .then(response => response.json())
+      .then(countries => {
+        this.setState({ countries })
+      })
+  }
+
+  logInUser = (user) => {
+    return (
+        localStorage.getItem('authToken')
+          ? this.setState({user})
+          : null
+    )
+  }
+
+  logOutUser = (event) => {
+      event.preventDefault()
+      localStorage.removeItem("authToken")
+      this.setState({
+          user: false,
+      })
+  }
+
+  render(){
+    const { user, countries } = this.state
+    return (
+      <div className="App">
+        <Router>
+          <div className="logo-box">
+            <img 
+                src="https://www.freelogodesign.org/file/app/client/thumb/47e25958-0542-4056-becb-7782843f2023_200x200.png?1577569432943" 
+                alt="logo" 
+                className="logo"
+            />
+          </div>
+          <Navigation loggedInUser={user} logOutUser={this.logOutUser}/>
+          <Switch>
+            <Route exact path="/" render={() => <Home />}/>
+            <Route path="/profile" render={() => <Profile />} />
+            <Route path="/countries" render={() => <Countries countries={countries}/>} />
+            <Route path="/login" render={() => <Login logInUser={this.logInUser}/>} />
+          </Switch>
+        </Router>
       </div>
-      <header className="header">
-        <div className="header__logo-box">
-          <img src="https://www.freelogodesign.org/file/app/client/thumb/47e25958-0542-4056-becb-7782843f2023_200x200.png?1577569432943" alt="logo" className="header__logo"/>
-        </div>
-        <div className="header__text-box">
-          <h1 className="heading-primary">
-            <span className="heading-primary--main">Come plan your</span>
-            <span className="heading-primary--second">World Journy Today</span>
-          </h1>
-        </div>
-      </header>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
