@@ -346,7 +346,67 @@ body {
     }
 }
 
-.countryContainer {
+.country {
     height: 100vh;
     width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    &__list {
+        background: #ffffffa5;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 70vw;
+        height: max-content;
+        padding-top: 20px;
+    }
+
+    &__card{
+        width: 12.5vw;
+        height: max-content;
+        box-shadow: 5px 5px 5px #d3d3d3;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #1f1f1f;
+        color: #fafafa;
+        margin-bottom: 20px;
+        margin-left: 5px;
+        text-align: center;
+
+        img {
+            width: 8vw;
+            height: 10vh;
+        }
+    }
+
+    &__card:hover{
+        transition: 0.7s cubic-bezier(0, 1%, 26%, 0.151);
+        transform: scale(1.5);
+        z-index: 10;
+    }
+
+    &__pagination {
+        display: flex;
+        padding-left: 0;
+        list-style: none;
+        border-radius: .25rem;
+        margin-top: 10px;
+        cursor: pointer;
+        
+        &__item{
+            border-top-right-radius: .25rem;
+            border-bottom-right-radius: .25rem;
+            position: relative;
+            display: block;
+            padding: .5rem .75rem;
+            margin-left: -1px;
+            line-height: 1.25;
+            color: #f9b813;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+        }
+    }
 }
