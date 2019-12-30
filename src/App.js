@@ -15,7 +15,9 @@ import {
 class App extends Component {
   state = {
     user: false,
-    countries: []
+    countries: [],
+    currentPage: 1,
+    countriesPerPage: 18,
   }
 
   componentDidMount(){
@@ -48,8 +50,18 @@ class App extends Component {
       })
   }
 
+  paginate = (pageNumber) => {
+    this.setState({
+      currentPage: pageNumber
+    })
+  }
+
   render(){
-    const { user, countries } = this.state
+    const { user, countries, countriesPerPage, currentPage } = this.state
+    const indexOfLastCountry = currentPage * countriesPerPage
+    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
+    const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry)
+
     return (
       <div className="App">
         <Router>
@@ -64,7 +76,16 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Home />}/>
             <Route path="/profile" render={() => <Profile />} />
-            <Route path="/countries" render={() => <Countries countries={countries}/>} />
+            <Route 
+              path="/countries" 
+              render={() => <Countries 
+                countries={currentCountries} 
+                countriesPerPage={countriesPerPage}
+                totalCountries={countries.length}
+                paginate={this.paginate}
+                />
+              } 
+            />
             <Route path="/login" render={() => <Login logInUser={this.logInUser}/>} />
           </Switch>
         </Router>

@@ -1,16 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 import CountryCard from './CountryCard'
+import Pagination from './Pagination'
 
-export default class Countries extends Component {
-    CountryCards = this.props.countries.map((country, i) => {
-        console.log(country)
+export default function Countries({ countries, countriesPerPage, totalCountries, paginate }) {
+
+    const countryCards = countries.map((country, i) => {
         return <CountryCard key={i} country={country}/>
     })
-    render(){
-        return (
-            <div className="country__container">
-                {this.CountryCards}
+
+    return (
+        <div className="country">
+            <div className="country__list">
+                {countryCards}
             </div>
-        )
-    }
+            <Pagination 
+                countriesPerPage={countriesPerPage}
+                totalCountries={totalCountries}
+                paginate={paginate}
+            />
+        </div>
+    )
 }
