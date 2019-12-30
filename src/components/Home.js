@@ -12,8 +12,8 @@ export default function Home() {
             </div>
             <div className="header__text-box">
             <h1 className="heading-primary">
-                <span className="heading-primary--main">A world journey</span>
-                <span className="heading-primary--second">at your finger tips</span>
+                <span className="heading-primary--main">Every Journey</span>
+                <span className="heading-primary--second">Begins with a single step</span>
             </h1>
             </div>
         </header>

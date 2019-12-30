@@ -43,7 +43,7 @@ export default class Login extends Component {
           first_name: "",
           last_name: "",
           username: "",
-          password: "",
+          password: ""
         })
       }
 
@@ -65,6 +65,7 @@ export default class Login extends Component {
             localStorage.setItem('authToken', response.auth_token)
             this.props.logInUser(response.user)
           })
+          .then(response => this.props.fetchPlans())
           .catch(error => console.log(error))
       }
 
