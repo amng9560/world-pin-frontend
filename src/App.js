@@ -25,13 +25,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch(`${BASE_URL}countries`, {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        // "Authorization": "Bearer " + localStorage.getItem('authToken')
-      }
-    })
+    fetch(`${BASE_URL}countries`)
       .then(response => response.json())
       .then(countries => {
         this.setState({ countries })
@@ -40,7 +34,7 @@ class App extends Component {
 
   logInUser = (user) => {
     return (
-        localStorage.getItem('authToken')
+        sessionStorage.getItem('authToken')
           ? this.setState({user})
           : null
     )
@@ -48,7 +42,8 @@ class App extends Component {
 
   logOutUser = (event) => {
       event.preventDefault()
-      localStorage.removeItem("authToken")
+      sessionStorage.clear()
+      sessionStorage.removeItem('authToken')
       this.setState({
           user: false,
       })
@@ -77,7 +72,7 @@ class App extends Component {
   fetchCall = (url, method, body) => {
     const headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem('authToken')
+        "Authorization": "Bearer " + sessionStorage.getItem('authToken')
     }
     return fetch(url, {method, headers, body})
   }
@@ -125,13 +120,16 @@ class App extends Component {
             />
             </a>
           </div>
+            />
+            />
           <Navigation loggedInUser={user} logOutUser={this.logOutUser}/>
           <Switch>
             <Route exact path="/" render={() => <Home />}/>
             <Route path="/profile" render={() => <Profile />} />
             <Route 
               path="/countries" 
-              render={() => <Countries 
+              render={() => <Countries
+                plans={this.state.plans} 
                 countries={currentCountries} 
                 countriesPerPage={countriesPerPage}
                 totalCountries={this.filterCountries().length}

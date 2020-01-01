@@ -62,7 +62,7 @@ export default class Login extends Component {
         fetch("http://localhost:3000/authenticate", request)
           .then(response => response.json())
           .then(response => {
-            localStorage.setItem('authToken', response.auth_token)
+            sessionStorage.setItem('authToken', response.auth_token)
             this.props.logInUser(response.user)
           })
           .then(response => this.props.fetchPlans())
