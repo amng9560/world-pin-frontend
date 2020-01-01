@@ -88,7 +88,6 @@ body {
           animation-duration: 2s;
   -webkit-animation-timing-function: ease-out;
           animation-timing-function: ease-out;
-  margin-bottom: 60px;
 }
 
 @-webkit-keyframes moveInLeft {
@@ -176,6 +175,15 @@ body {
           box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
   text-align: center;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .navigation__background {
@@ -212,8 +220,8 @@ body {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   list-style: none;
-  text-align: center;
-  width: 100%;
+  width: 50vw;
+  height: 80vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -221,10 +229,15 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 .navigation__item {
-  margin: 1rem;
   display: inline-block;
   font-size: 3rem;
   font-weight: 300;
@@ -257,7 +270,6 @@ body {
 
 .navigation__icon {
   position: relative;
-  margin-top: 3.5rem;
 }
 
 .navigation__icon, .navigation__icon::before, .navigation__icon::after {
@@ -321,6 +333,13 @@ body {
   width: 50vw;
   width: 50%;
   padding: 6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 @media only screen and (max-width: 75em) {
@@ -355,7 +374,6 @@ body {
   display: block;
   -webkit-transition: all .3s;
   transition: all .3s;
-  margin-top: 10px;
 }
 
 @media only screen and (max-width: 56.25em) {
@@ -387,6 +405,7 @@ body {
 }
 
 .form .submitButton {
+  width: 20vw;
   text-transform: uppercase;
   text-decoration: none;
   padding: 1rem 2rem;
@@ -411,6 +430,8 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .country__container {
@@ -459,18 +480,25 @@ body {
   padding: 10px;
   background-color: #1f1f1f;
   color: #fafafa;
-  margin-bottom: 20px;
-  margin-left: 5px;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 5px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .country__container__card img {
   width: 8vw;
   height: 10vh;
-}
-
-.country__container__card p {
-  margin: 2px 0;
 }
 
 .country__container__card:hover {

@@ -76,7 +76,6 @@ body {
         animation-name: moveInRight;
         animation-duration: 2s;
         animation-timing-function: ease-out;
-        margin-bottom: 60px;
     }
 }
 
@@ -129,6 +128,9 @@ body {
         box-shadow: 0 1rem 3rem rgba(#000, .1);
         text-align: center;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__background {
@@ -161,14 +163,15 @@ body {
         left: 50%;
         transform: translate(-50%,-50%);
         list-style: none;
-        text-align: center;
-        width: 100%;
+        width: 50vw;
+        height: 80vh;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
     }
 
     &__item {
-        margin: 1rem;
         display: inline-block;
         font-size: 3rem;
         font-weight: 300;
@@ -199,7 +202,6 @@ body {
 
     &__icon {
         position: relative;
-        margin-top: 3.5rem;
 
         &,
         &::before,
@@ -281,6 +283,8 @@ body {
 
         width: 50%;
         padding: 6rem;
+        display: flex;
+        flex-direction: column;
 
         @include respond(tab-land) {
             width: 65%;
@@ -306,7 +310,6 @@ body {
         width: 20vw;
         display: block;
         transition: all .3s;
-        margin-top: 10px;
 
         @include respond(tab-port) {
             width: 100%;
@@ -334,6 +337,7 @@ body {
     }
 
     .submitButton {
+        width: 20vw;
         text-transform: uppercase;
         text-decoration: none;
         padding: 1rem 2rem;
@@ -352,6 +356,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-content: space-around;
 
     &__container{
         background: #ffffffa5;
@@ -366,6 +371,7 @@ body {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            // justify-content: space-around;
             width: 70vw;
             height: max-content;
             padding-top: 20px;
@@ -379,17 +385,16 @@ body {
             padding: 10px;
             background-color: #1f1f1f;
             color: #fafafa;
-            margin-bottom: 20px;
-            margin-left: 5px;
             text-align: center;
+            display: flex;
+            margin: 10px 5px;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
     
             img {
                 width: 8vw;
                 height: 10vh;
-            }
-            
-            p {
-                margin: 2px 0;
             }
         }
     

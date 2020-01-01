@@ -6,11 +6,15 @@ export default class Navigation extends Component{
         checked: false
     }
 
+    handleChange = () => {
+        this.setState({checked: !this.state.checked})
+    }
+
     toggleLogin = () => {
         if (this.props.loggedInUser) {
           return (
-            <div className="navigation__item">
-                <a onClick={this.propslogOutUser}>
+            <div onClick={this.propslogOutUser}>
+                <a className="navigation__item" to="/login" onClick={this.handleChange}>
                     Logout
                 </a>
             </div>
@@ -20,9 +24,6 @@ export default class Navigation extends Component{
         }
       }
 
-    handleChange = () => {
-        this.setState({checked: !this.state.checked})
-    }
     render(){
         return (
             <div className="navigation">
