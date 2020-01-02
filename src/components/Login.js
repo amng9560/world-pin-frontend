@@ -65,7 +65,10 @@ export default class Login extends Component {
             sessionStorage.setItem('authToken', response.auth_token)
             this.props.logInUser(response.user)
           })
-          .then(response => this.props.fetchPlans())
+          .then(response => {
+            this.props.fetchPlans()
+            this.props.history.push('/')
+          })
           .catch(error => console.log(error))
       }
 
@@ -75,12 +78,15 @@ export default class Login extends Component {
             <input 
               className="form__input"
               onChange={this.handleChange} 
-              type="text" name="firs_tname" 
+              value={this.state.first_name}
+              type="text" 
+              name="first_name" 
               placeholder="First Name" 
             />
             <input 
               className="form__input"
-              onChange={this.handleChange} 
+              onChange={this.handleChange}
+              value={this.state.last_name} 
               type="text" 
               name="last_name" 
               placeholder="Last Name" 
@@ -96,8 +102,8 @@ export default class Login extends Component {
               <h3>{this.state.existingUser ? "Sign Up" : "Log In"}</h3>
               <form className="form" onSubmit={this.handleSubmit}>
                 {this.loggingIn()}
-                <input className="form__input" onChange={this.handleChange} type="text" name="username" placeholder="Username"/>
-                <input className="form__input" onChange={this.handleChange} type="password" name="password" placeholder="Password"/>
+                <input className="form__input" onChange={this.handleChange} value={this.state.username} type="text" name="username" placeholder="Username"/>
+                <input className="form__input" onChange={this.handleChange} value={this.state.password} type="password" name="password" placeholder="Password"/>
                 <input className="submitButton" id="submit" type="submit"/>
               </form>
               <h4 onClick={this.toggleExistingUser}>{this.state.existingUser ? "Already a User" : "Need to create an account?"}</h4>

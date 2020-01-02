@@ -13,7 +13,7 @@ export default class Navigation extends Component{
     toggleLogin = () => {
         if (this.props.loggedInUser) {
           return (
-            <div onClick={this.propslogOutUser}>
+            <div onClick={this.props.logOutUser}>
                 <a className="navigation__item" to="/login" onClick={this.handleChange}>
                     Logout
                 </a>
