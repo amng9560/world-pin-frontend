@@ -32,13 +32,13 @@ export default class AddPlan extends Component {
         const { selectedOption } = this.state;
         return (
             <div>
-                <form onSubmit={this.handleSubmit} className="country__container__card__form">
+                <form onSubmit={this.handleSubmit} className="plan__form__items">
                     <Select
                         value={selectedOption}
                         onChange={this.handleChange}
                         options={options} 
                     />
-                    <input type="submit" value="submit"/>
+                    <input type="submit" value="submit" className="plan__form__items__submit"/>
                 </form>
             </div>
         )

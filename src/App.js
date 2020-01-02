@@ -42,7 +42,6 @@ class App extends Component {
 
   logOutUser = (event) => {
       event.preventDefault()
-      sessionStorage.clear()
       sessionStorage.removeItem('authToken')
       this.setState({
           user: false,
@@ -120,8 +119,6 @@ class App extends Component {
             />
             </a>
           </div>
-            />
-            />
           <Navigation loggedInUser={user} logOutUser={this.logOutUser}/>
           <Switch>
             <Route exact path="/" render={() => <Home />}/>
@@ -141,7 +138,7 @@ class App extends Component {
                 />
               } 
             />
-            <Route path="/login" render={() => <Login logInUser={this.logInUser} fetchPlans={this.fetchPlans}/>} />
+            <Route path="/login" render={(props) => <Login {...props} logInUser={this.logInUser} fetchPlans={this.fetchPlans}/>} />
           </Switch>
         </Router>
       </div>

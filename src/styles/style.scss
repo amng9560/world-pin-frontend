@@ -19,97 +19,7 @@ body {
     height: 9rem;
 }
 
-.header {
-    height: 100vh;
-    background-image: linear-gradient(
-        to right bottom,
-        #efd799bb,
-        #fcbf24cf),
-    url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/vintage-map-of-the-world-in-brown-yorkfoto.jpg);
-    background-size: cover;
-    background-position: center;
-    position: relative;
-
-    &__logo-box {
-        position: absolute;
-        top: 4rem;
-        left: 4rem;
-    }
-
-    &__logo {
-        height: 9rem;
-    }
-    
-    &__text-box {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-    }
-}
-
-.heading-primary {
-    color: #fff;
-    text-transform: uppercase;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-
-    &--main {
-        display: block;
-        font-size: 60px;
-        font-weight: 700;
-        letter-spacing: 15px;
-    
-        animation-name: moveInLeft;
-        animation-duration: 2s;
-        animation-timing-function: ease-out;
-    }
-
-    &--second {
-        display: block;
-        font-size: 30px;
-        font-weight: 700;
-        letter-spacing: 17.4px;
-        animation-name: moveInRight;
-        animation-duration: 2s;
-        animation-timing-function: ease-out;
-    }
-}
-
-@keyframes moveInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-
-    80%{
-        transform: translateX(10px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-@keyframes moveInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-
-    80%{
-        transform: translateX(-10px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
+@import './layout/header';
 
 .navigation {
     &__checkbox {
@@ -354,10 +264,10 @@ body {
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    justify-content: space-around;
-
+    padding-top: 2rem;
+    
     &__container{
         background: #ffffffa5;
         display: flex;
@@ -366,6 +276,7 @@ body {
         width: 70vw;
         height: max-content;
         padding: 10px;
+        top: 1rem;
 
         &__list {
             display: flex;
@@ -426,5 +337,26 @@ body {
             background-color: #fff;
             border: 1px solid #dee2e6;
         }
+    }
+}
+
+.plans {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 100vw;
+    padding-top: 0.2rem;
+
+    &__container {
+        width: 30vw;
+        height: 30vh;
+        background: #faeac7;
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
     }
 }
