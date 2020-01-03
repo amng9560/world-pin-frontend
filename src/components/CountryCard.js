@@ -22,9 +22,8 @@ export default class CountryCard extends Component {
 
     render(){
         const { country, index } = this.props
-        // const id = '' + country.id
         return (
-            <Draggable draggableId={`${country.id}`} index={index}>
+            <Draggable draggableId={country.name} index={index}>
                 {(provided, snapshot) => (
                     <div 
                         className="country__container__card"

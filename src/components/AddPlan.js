@@ -10,19 +10,24 @@ const options = [
 
 export default class AddPlan extends Component {
     state = {
-        country_id: this.props.id,
         selectedOption: null,
+    }
+
+    getCountryIds = () => {
+        const { makePlans } = this.props 
+        return makePlans.map(country => country.id)
     }
 
     handleChange = (selectedOption) => {
         this.setState({selectedOption})
-        console.log('selected option', selectedOption)
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const { createPlan } = this.props
-        createPlan(this.state)
+        const { createPlan, submitState } = this.props
+        const { value } = this.state.selectedOption
+        submitState()
+        createPlan(value, this.getCountryIds())
         this.setState({
             selectedOption: null,
         })
@@ -31,16 +36,15 @@ export default class AddPlan extends Component {
     render(){
         const { selectedOption } = this.state;
         return (
-            <div>
-                <form onSubmit={this.handleSubmit} className="plan__form__items">
-                    <Select
-                        value={selectedOption}
-                        onChange={this.handleChange}
-                        options={options} 
-                    />
-                    <input type="submit" value="submit" className="plan__form__items__submit"/>
-                </form>
-            </div>
+            <form onSubmit={this.handleSubmit} className="plans__form">
+                <Select
+                    value={selectedOption}
+                    onChange={this.handleChange}
+                    options={options}
+                    className="plans__form__select"
+                />
+                <input type="submit" value="submit" className="plans__form__submit"/>
+            </form>
         )
     }
 }

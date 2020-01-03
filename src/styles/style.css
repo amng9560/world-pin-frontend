@@ -7,16 +7,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background: #f4c460;
-}
-
-.logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
-
-.logo {
-  height: 9rem;
+  font-family: 'Lato', sans-serif;
 }
 
 .header {
@@ -304,6 +295,16 @@ body {
   top: 1rem;
 }
 
+.logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.logo {
+  height: 9rem;
+}
+
 .signInContainer {
   width: 100%;
   height: 100vh;
@@ -420,7 +421,7 @@ body {
 }
 
 .country {
-  height: 100vh;
+  height: 140vh;
   width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -432,11 +433,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   padding-top: 2rem;
 }
 
 .country__container {
-  background: #ffffffa5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -453,6 +455,7 @@ body {
   height: max-content;
   padding: 10px;
   top: 1rem;
+  background: #faeac7;
 }
 
 .country__container__list {
@@ -481,7 +484,7 @@ body {
   border-radius: 5px;
   padding: 10px;
   background-color: #1f1f1f;
-  color: #fafafa;
+  color: #fff;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -539,21 +542,28 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 40vh;
-  width: 100vw;
-  padding-top: 0.2rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 5px;
+  width: 25vw;
+  height: 30vh;
+  background: #faeac7;
 }
 
 .plans__container {
-  width: 30vw;
-  height: 30vh;
-  background: #faeac7;
+  width: 25vw;
+  height: 25vh;
+}
+
+.plans__container__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .plans__form {
@@ -564,7 +574,21 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.plans__form__select {
+  width: 9rem;
+}
+
+.plans__form__submit {
+  width: 4.5rem;
+  color: #f9b813;
+  padding: 10px;
+  font-size: 24px;
 }
 /*# sourceMappingURL=style.css.map */

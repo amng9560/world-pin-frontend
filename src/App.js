@@ -88,23 +88,23 @@ class App extends Component {
       })
   }
 
-  createPlan = (plan) => {
-    const {id} = this.state.user
-    const body = JSON.stringify({...plan, user_id: id})
-    return this.fetchCall(`${BASE_URL}/users/${id}/plan`, "POST", body)
-    .then(response => response.json())
-    .then(plan => {
-      this.setState({
-        plans: [...this.state.plans, plan]
-      })
-    })
+  createPlan = (year, country_ids) => {
+    const { id } = this.state.user
+    const body = JSON.stringify({plan: {year, country_ids: ["", ...country_ids], user_id: id}})
+    return this.fetchCall(`${BASE_URL}users/${id}/plans`, "POST", body)
+      .then(response => response.json())
+      .then(console.log)
+    // .then(plan => {
+    //   this.setState({
+    //     plans: [...this.state.plans, plan]
+    //   })
+    // })
   }
 
   render(){
     const { user, countriesPerPage, currentPage } = this.state
     const indexOfLastCountry = currentPage * countriesPerPage
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
-    // const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry)
     const currentCountries = this.filterCountries().slice(indexOfFirstCountry, indexOfLastCountry)
 
     return (
@@ -126,11 +126,9 @@ class App extends Component {
             <Route 
               path="/countries" 
               render={() => <Countries
-                plans={this.state.plans} 
                 countries={currentCountries} 
                 countriesPerPage={countriesPerPage}
                 totalCountries={this.filterCountries().length}
-                // totalCountries={countries.length}
                 paginate={this.paginate}
                 updateSearchTerm={this.updateSearchTerm}
                 searchTerm={this.state.searchTerm}
