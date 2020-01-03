@@ -1,6 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function Home() {
+export default function Home({ loggedInUser }) {
+
+    const toggleLoginLink = () => {
+        if(loggedInUser){
+            return ""
+        } else {
+            return (
+            <Link to="/login" className="header__btn header__btn--white header__btn--animated" >
+                Get Started!
+            </Link>
+            )
+        }
+    }
+
     return (
         <header className="header">
             <div className="header__logo-box">
@@ -15,6 +29,7 @@ export default function Home() {
                 <span className="heading-primary--main">Every Journey</span>
                 <span className="heading-primary--second">Begins with a single step</span>
             </h1>
+                {toggleLoginLink()}
             </div>
         </header>
     )
