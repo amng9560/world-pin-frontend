@@ -3,6 +3,8 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import CountryContainer from './CountryContainer'
 import AddPlan from './AddPlan'
 
+
+
 const copy = (source, destination, droppableSource, droppableDestination) => {
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
@@ -16,11 +18,13 @@ const move = (source, destination, droppableSource, droppableDestination) => {
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const [removed] = sourceClone.splice(droppableSource.index, 1);
-    const newDest = destClone.splice(droppableDestination.index, 0, removed);
-
+  
+    destClone.splice(droppableDestination.index, 0, removed);
+  
     const result = {};
-    console.log("move result",result)
     result[droppableSource.droppableId] = sourceClone;
+    // result[droppableDestination.droppableId] = destClone;
+  
     return result;
 };
 
@@ -32,7 +36,6 @@ export default class Countries extends Component {
 
     onDragEnd = result => {
         const { source, destination } = result;
-        console.log([source.droppableId])
 
         if (!destination) {
           return;
@@ -66,15 +69,21 @@ export default class Countries extends Component {
         }
     };
 
+    submitState = (event) => {
+        event.preventDefault()
+        this.setState({
+            makePlans: []
+        })
+    }
+
     createOriginDraggable = (item, index) => {
-        console.log(item.id)
         return <Draggable key={item.id} draggableId={`${item.id}`} index={index}>
           {(provided, snapshot) => (
               <div
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 style={provided.draggableProps.style}
-                className="plans__container__items"
+                className="plans__container__list"
               > 
                 <div
                     {...provided.dragHandleProps}>
@@ -98,34 +107,34 @@ export default class Countries extends Component {
         const { countries, countriesPerPage, totalCountries, paginate, updateSearchTerm, searchTerm } = this.props
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
-                <CountryContainer 
-                    countries={countries} 
-                    countriesPerPage={countriesPerPage} 
-                    totalCountries={totalCountries} 
-                    paginate={paginate} 
-                    updateSearchTerm={updateSearchTerm} 
-                    searchTerm={searchTerm}
-                />
-                <div className="plans">
+                <div className="country">
+                    <CountryContainer 
+                        countries={countries} 
+                        countriesPerPage={countriesPerPage} 
+                        totalCountries={totalCountries} 
+                        paginate={paginate} 
+                        updateSearchTerm={updateSearchTerm} 
+                        searchTerm={searchTerm}
+                    />
                     {Object.keys(this.state).map((plan, i) => (
-                            <Droppable key={i} droppableId={plan}>
-                                {(provided, snapshot) => (
-                                    <div
-                                        ref={provided.innerRef}
-                                        onDragOver={snapshot.onDragOver}
-                                        className="plans__container"
-                                    >
-                                        <div className="plans__form">
-                                            <AddPlan />
-                                        </div>
+                        <Droppable key={i} droppableId={plan}>
+                            {(provided, snapshot) => (
+                                <div
+                                    ref={provided.innerRef}
+                                    onDragOver={snapshot.onDragOver}
+                                    className="plans"
+                                >
+                                    <AddPlan createPlan={this.props.createPlan} makePlans={this.state.makePlans} submitState={this.submitState}/>
+                                    <div className="plans__container">
                                         <h3>Place Countries Here: </h3>
-                                    {this.state[plan].map(this.createOriginDraggable)}
-                                    {provided.placeholder}
-                                </div>
-                                )}
-                                
-                            </Droppable>
-                        ))}
+                                        {this.state[plan].map(this.createOriginDraggable)}
+                                    </div>
+                                {provided.placeholder}
+                            </div>
+                            )}
+                            
+                        </Droppable>
+                    ))}
                 </div>
             </DragDropContext>
         )

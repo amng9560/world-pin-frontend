@@ -10,7 +10,6 @@ export default function CountryContainer({ countries, countriesPerPage, totalCou
     })
 
     return (
-        <div className="country">
             <div className="country__container">
                 <FilterCountries 
                     searchTerm={searchTerm} 
@@ -34,6 +33,5 @@ export default function CountryContainer({ countries, countriesPerPage, totalCou
                     paginate={paginate}
                 />
             </div>
-        </div>
     )
 }

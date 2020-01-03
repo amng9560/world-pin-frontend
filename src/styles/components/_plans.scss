@@ -1,0 +1,36 @@
+.plans {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 25vw;
+    height: 30vh;
+    background: $color-light-tan;
+
+    &__container {
+        width: 25vw;
+        height: 25vh;
+
+        &__list{
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+        &__select{
+            width: 9rem;
+        }
+
+        &__submit {
+            width: 4.5rem;
+            color: $primary-color-dark;
+            padding: 10px;
+            font-size: 24px;
+        }
+    }
+}

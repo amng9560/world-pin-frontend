@@ -1,0 +1,80 @@
+.country {
+    height: 140vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 2rem;
+    
+    &__container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 70vw;
+        height: max-content;
+        padding: 10px;
+        top: 1rem;
+        background: $primary-color-light;
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            // justify-content: space-around;
+            width: 70vw;
+            height: max-content;
+            padding-top: 20px;
+        }
+    
+        &__card{
+            width: 12.5vw;
+            height: max-content;
+            box-shadow: 5px 5px 5px $color-grey-light-1;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: $color-light-black;
+            color: $color-white;
+            text-align: center;
+            display: flex;
+            margin: 10px 5px;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+    
+            img {
+                width: 8vw;
+                height: 10vh;
+            }
+        }
+    
+        &__card:hover{
+            transition: 0.7s cubic-bezier(0, 1%, 26%, 0.151);
+            transform: scale(1.5);
+            z-index: 10;
+        }
+    }
+
+
+    &__pagination {
+        display: flex;
+        padding-left: 0;
+        list-style: none;
+        border-radius: .25rem;
+        margin-top: 10px;
+        cursor: pointer;
+        
+        &__item{
+            border-top-right-radius: .25rem;
+            border-bottom-right-radius: .25rem;
+            position: relative;
+            display: block;
+            padding: .5rem .75rem;
+            margin-left: -1px;
+            line-height: 1.25;
+            color: $primary-color-dark;
+            background-color: $color-white;
+            border: 1px solid $color-grey-light-2;
+        }
+    }
+}
