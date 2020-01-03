@@ -121,7 +121,7 @@ class App extends Component {
           </div>
           <Navigation loggedInUser={user} logOutUser={this.logOutUser}/>
           <Switch>
-            <Route exact path="/" render={() => <Home />}/>
+            <Route exact path="/" render={() => <Home loggedInUser={user}/>}/>
             <Route path="/profile" render={() => <Profile />} />
             <Route 
               path="/countries" 
