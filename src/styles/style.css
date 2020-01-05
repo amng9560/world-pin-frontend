@@ -723,8 +723,11 @@ body {
 .profile__plan {
   padding: 20px;
   width: 10vw;
-  height: 55vh;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   background-color: #778899b3;
+  color: #939ccc;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

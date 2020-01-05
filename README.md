@@ -5,6 +5,7 @@
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Status](#status)
+* [Credit](#credit)
 
 ## General info
 World Pin is a simple web appplication that allows the users to make current, 1 year, 5 year and 10 year plans. They can do this by logging in, going to the country tab, browsing the countries, then using the drag and drop feature and selecting the countries they'd like to visit. In that section there is a drop menu to select if is a current, 1 year, 5 year or 10 year plan. Then when finishing creating a plan, they can view all plans with the associated countries in their profile. 
@@ -32,4 +33,8 @@ World Pin is a simple web appplication that allows the users to make current, 1 
 * refactor code
 
 ## Status
-The project is not finished and not deployed due to the need to change the overall structure of the website. 
+The project is not finished and not deployed due to the need to change the overall structure of the website.
+
+## Credit
+Information for all the countries were pulled from [infoplease.com](https://www.infoplease.com/world/countries) and [worldometers.info](https://www.worldometers.info/geography/how-many-countries-are-there-in-the-world/)
+

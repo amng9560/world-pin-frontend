@@ -1,0 +1,19 @@
+.profile {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+
+    &__plan {
+        padding: 20px;
+        width: 10vw;
+        height: max-content;
+        background-color: #778899b3;
+        color: #939ccc;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+}
