@@ -43,7 +43,7 @@ export default class Navigation extends Component{
 
             <nav className="navigation__nav">
                 <ul className="navigation__list">
-                    <NavLink className="navigation__item" to="/" onClick={this.handleChange}>Home</NavLink>
+                    <NavLink className="navigation__item" to="/home" onClick={this.handleChange}>Home</NavLink>
                     <NavLink className="navigation__item" to="/profile" onClick={this.handleChange}>Profile</NavLink>
                     <NavLink className="navigation__item" to="/countries" onClick={this.handleChange}>Countries</NavLink>
                     {this.toggleLogin()}

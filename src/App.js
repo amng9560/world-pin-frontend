@@ -9,7 +9,8 @@ import Login from './components/Login'
 import { 
   BrowserRouter as Router, 
   Switch, 
-  Route 
+  Route,
+  Redirect 
 } from 'react-router-dom'
 
 const BASE_URL = "http://localhost:3000/"
@@ -130,6 +131,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
+          {sessionStorage.getItem('authToken') && this.state.user ? <Redirect to='/home' /> : <Redirect to="/login" />}
           <div className="logo-box">
             <a href="/">
               <img 
@@ -141,7 +143,7 @@ class App extends Component {
           </div>
           <Navigation loggedInUser={user} logOutUser={this.logOutUser}/>
           <Switch>
-            <Route exact path="/" render={() => <Home loggedInUser={user}/>}/>
+            <Route exact path="/home" render={() => <Home loggedInUser={user}/>}/>
             <Route path="/profile" render={() => <Profile plans={this.state.plans} validate={this.validate}/>} />
             <Route 
               path="/countries" 
