@@ -3,8 +3,6 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import CountryContainer from './CountryContainer'
 import AddPlan from './AddPlan'
 
-
-
 const copy = (source, destination, droppableSource, droppableDestination) => {
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
@@ -23,7 +21,6 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   
     const result = {};
     result[droppableSource.droppableId] = sourceClone;
-    // result[droppableDestination.droppableId] = destClone;
   
     return result;
 };
@@ -69,8 +66,7 @@ export default class Countries extends Component {
         }
     };
 
-    submitState = (event) => {
-        event.preventDefault()
+    submitState = () => {
         this.setState({
             makePlans: []
         })
