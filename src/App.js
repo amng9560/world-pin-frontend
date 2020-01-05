@@ -30,6 +30,26 @@ class App extends Component {
       .then(countries => {
         this.setState({ countries })
       })
+      // this.validate()
+  }
+
+  validate = () => {
+    const { id } = this.state.user
+    fetch(`${BASE_URL}users/${id}`, {
+      method: 'GET',
+      headers: {
+        "Authorization": "Bearer " + sessionStorage.getItem('authToken')
+      }
+    })
+      .then(response => response.json())
+      .then(user => {
+        this.setState({
+          user: user
+        })
+      })
+      .then(response => {
+        this.fetchPlans()
+      })
   }
 
   logInUser = (user) => {
@@ -93,12 +113,12 @@ class App extends Component {
     const body = JSON.stringify({plan: {year, country_ids: ["", ...country_ids], user_id: id}})
     return this.fetchCall(`${BASE_URL}users/${id}/plans`, "POST", body)
       .then(response => response.json())
-      .then(console.log)
-    // .then(plan => {
-    //   this.setState({
-    //     plans: [...this.state.plans, plan]
-    //   })
-    // })
+      // .then(console.log)
+      .then(plan => {
+        this.setState({
+          plans: [...this.state.plans, plan]
+        })
+      })
   }
 
   render(){
@@ -122,7 +142,7 @@ class App extends Component {
           <Navigation loggedInUser={user} logOutUser={this.logOutUser}/>
           <Switch>
             <Route exact path="/" render={() => <Home loggedInUser={user}/>}/>
-            <Route path="/profile" render={() => <Profile />} />
+            <Route path="/profile" render={() => <Profile plans={this.state.plans} validate={this.validate}/>} />
             <Route 
               path="/countries" 
               render={() => <Countries

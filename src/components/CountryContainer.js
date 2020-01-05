@@ -11,10 +11,13 @@ export default function CountryContainer({ countries, countriesPerPage, totalCou
 
     return (
             <div className="country__container">
+                <div className="country__container__search">
                 <FilterCountries 
                     searchTerm={searchTerm} 
                     updateSearchTerm={updateSearchTerm}
                 />
+                <h3>Continents to search: Asia, Africa, North America, South America, Europe, Austrailia, Oceania</h3>
+                </div>
                 <Droppable droppableId="countries">
                     {(provided, snapshot) => (
                         <div
